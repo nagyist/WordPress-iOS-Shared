@@ -63,10 +63,12 @@ let package = Package(
 )
 
 func loadSwiftLintVersion() -> Version {
-    guard let yamlString = try? String(contentsOf: URL(fileURLWithPath: #file)
+    let swiftLintConfigURL = URL(fileURLWithPath: #file)
         .deletingLastPathComponent()
-        .appendingPathComponent(".swiftlint.yml")) else {
-        fatalError("Failed to read YAML file.")
+        .appendingPathComponent(".swiftlint.yml")
+
+    guard let yamlString = try? String(contentsOf: swiftLintConfigURL) else {
+        fatalError("Failed to read SwiftLint config file at \(swiftLintConfigURL).")
     }
 
     guard let versionLine = yamlString.components(separatedBy: .newlines)
