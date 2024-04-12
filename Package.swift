@@ -1,4 +1,4 @@
-// swift-tools-version:5.5
+// swift-tools-version:5.10
 
 import Foundation
 import PackageDescription
@@ -15,7 +15,7 @@ let package = Package(
         // See https://github.com/erikdoe/ocmock/issues/500#issuecomment-1002700625
         .package(url: "https://github.com/erikdoe/ocmock", revision: "afd2c6924e8a36cb872bc475248b978f743c6050"),
         .package(url: "https://github.com/Quick/Quick", from: "6.0.0"),
-        .package(url: "https://github.com/realm/SwiftLint", .exactItem(loadSwiftLintVersion()))
+        .package(url: "https://github.com/realm/SwiftLint", exact: loadSwiftLintVersion())
     ],
     targets: [
         .target(

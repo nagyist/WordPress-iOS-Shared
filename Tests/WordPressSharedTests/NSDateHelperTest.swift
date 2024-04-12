@@ -56,22 +56,26 @@ class NSDateHelperTest: XCTestCase {
     }
 
     /// Verifies that  `mediumStringWithTime` takes into account the time zone adjustment
-    /// If this test is failing, check that the Test Plan is still using en-US as its language
+    ///
+    /// This legacy test is a bit silly because it is simply testing that the code calls `DateFormatter` with the expected configuration.
+    /// This was done to make the test robust against underlying changes in `DateFormatter`'s behavior.
+    /// Example failure this avoids: https://buildkite.com/automattic/wordpress-shared-ios/builds/235#018ed45e-c2be-40e5-9759-6bd7c0735ce9/6-2623
     func testMediumStringTimeZoneAdjust() {
         let date = Date()
         let timeZone = TimeZone(secondsFromGMT: Calendar.current.timeZone.secondsFromGMT() - (60 * 60))
         XCTAssertEqual(date.toMediumString(inTimeZone: timeZone), "now")
 
         let timeFormatter = DateFormatter()
-        timeFormatter.dateStyle = .none
+        timeFormatter.doesRelativeDateFormatting = true
+        timeFormatter.dateStyle = .medium
         timeFormatter.timeStyle = .short
         let withoutTimeZoneAdjust = timeFormatter.string(from: date)
 
-        XCTAssertEqual(date.mediumStringWithTime(), "Today, \(withoutTimeZoneAdjust)")
+        XCTAssertEqual(date.mediumStringWithTime(), withoutTimeZoneAdjust)
 
         timeFormatter.timeZone = timeZone
         let withTimeZoneAdjust = timeFormatter.string(from: date)
 
-        XCTAssertEqual(date.mediumStringWithTime(timeZone: timeZone), "Today, \(withTimeZoneAdjust)")
+        XCTAssertEqual(date.mediumStringWithTime(timeZone: timeZone), withTimeZoneAdjust)
     }
 }
