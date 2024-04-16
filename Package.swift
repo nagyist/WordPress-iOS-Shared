@@ -1,11 +1,11 @@
-// swift-tools-version:5.5
+// swift-tools-version:5.10
 
 import Foundation
 import PackageDescription
 
 let package = Package(
     name: "WordPressShared",
-    platforms: [.iOS(.v13)],
+    platforms: [.iOS(.v13), .macOS(.v12)],
     products: [
         .library(name: "WordPressShared", targets: ["WordPressShared"])
     ],
@@ -15,7 +15,7 @@ let package = Package(
         // See https://github.com/erikdoe/ocmock/issues/500#issuecomment-1002700625
         .package(url: "https://github.com/erikdoe/ocmock", revision: "afd2c6924e8a36cb872bc475248b978f743c6050"),
         .package(url: "https://github.com/Quick/Quick", from: "6.0.0"),
-        .package(url: "https://github.com/realm/SwiftLint", .exactItem(loadSwiftLintVersion()))
+        .package(url: "https://github.com/realm/SwiftLint", exact: loadSwiftLintVersion())
     ],
     targets: [
         .target(
@@ -63,10 +63,12 @@ let package = Package(
 )
 
 func loadSwiftLintVersion() -> Version {
-    guard let yamlString = try? String(contentsOf: URL(fileURLWithPath: #file)
+    let swiftLintConfigURL = URL(fileURLWithPath: #file)
         .deletingLastPathComponent()
-        .appendingPathComponent(".swiftlint.yml")) else {
-        fatalError("Failed to read YAML file.")
+        .appendingPathComponent(".swiftlint.yml")
+
+    guard let yamlString = try? String(contentsOf: swiftLintConfigURL) else {
+        fatalError("Failed to read SwiftLint config file at \(swiftLintConfigURL).")
     }
 
     guard let versionLine = yamlString.components(separatedBy: .newlines)

@@ -140,14 +140,9 @@ extension Date {
     }
 
     /// Formats the current date as a medium relative date/time.
+    /// That is, it uses the `DateFormatter` `dateStyle` `.medium` and `timeStyle` `.short`.
+    ///
     /// - Parameter timeZone: An optional time zone used to adjust the date formatters.
-    ///
-    /// - Example: Tomorrow, 6:45 AM
-    /// - Example: Today, 8:09 AM
-    /// - Example: Yesterday, 11:36 PM
-    /// - Example: Jan 28, 2017, 1:51 PM
-    /// - Example: Jan 22, 2017, 2:18 AM
-    ///
     public func mediumStringWithTime(timeZone: TimeZone? = nil) -> String {
         let formatter = DateFormatters.mediumDateTime
         if let timeZone = timeZone {
