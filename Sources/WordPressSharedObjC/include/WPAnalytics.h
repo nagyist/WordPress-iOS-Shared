@@ -494,6 +494,7 @@ typedef NS_ENUM(NSUInteger, WPAnalyticsStat) {
     WPAnalyticsStatSpotlightSearchOpenedApp,
     WPAnalyticsStatSkippedConnectingToJetpack,
     WPAnalyticsStatStatsAccessed,
+    WPAnalyticsStatStatsSubscribersAccessed,
     WPAnalyticsStatStatsDateTappedBackward,
     WPAnalyticsStatStatsDateTappedForward,
     WPAnalyticsStatStatsInsightsAccessed,
