@@ -38,7 +38,7 @@ _None._
 
 ### New Features
 
-_None._
+- Added an analytics event for Stats Subscribers [#356]
 
 ### Bug Fixes
 
