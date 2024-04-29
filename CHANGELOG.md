@@ -38,7 +38,7 @@ _None._
 
 ### New Features
 
-- Added an analytics event for Stats Subscribers [#356]
+_None._
 
 ### Bug Fixes
 
@@ -47,6 +47,12 @@ _None._
 ### Internal Changes
 
 _None._
+
+## 2.4.0
+
+### New Features
+
+- Added an analytics event for Stats Subscribers [#356]
 
 ## 2.3.1
 
