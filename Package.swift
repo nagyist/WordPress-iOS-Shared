@@ -11,7 +11,6 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/buildkite/test-collector-swift", from: "0.3.0"),
-        .package(url: "https://github.com/AliSoftware/OHHTTPStubs", from: "9.1.0"),
         .package(url: "https://github.com/realm/SwiftLint", exact: loadSwiftLintVersion())
     ],
     targets: [
@@ -33,8 +32,7 @@ let package = Package(
             name: "WordPressSharedTests",
             dependencies: [
                 .target(name: "WordPressShared"),
-                .product(name: "BuildkiteTestCollector", package: "test-collector-swift"),
-                "OHHTTPStubs",
+                .product(name: "BuildkiteTestCollector", package: "test-collector-swift")
             ],
             plugins: [
                 .plugin(name: "SwiftLintPlugin", package: "SwiftLint")
@@ -44,8 +42,7 @@ let package = Package(
             name: "WordPressSharedObjCTests",
             dependencies: [
                 .target(name: "WordPressShared"),
-                .product(name: "BuildkiteTestCollector", package: "test-collector-swift"),
-                "OHHTTPStubs",
+                .product(name: "BuildkiteTestCollector", package: "test-collector-swift")
             ],
             resources: [.process("Resources")],
             plugins: [
