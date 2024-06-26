@@ -37,9 +37,6 @@ Pod::Spec.new do |s|
       'Tests/WordPressSharedTestsObjC/**/*.{h,m}'
     ]
     test.resources = 'Tests/WordPressSharedObjCTests/Resources/*.{jpg,gif}'
-
-    test.dependency 'OHHTTPStubs', '~> 9.0'
-    test.dependency 'OHHTTPStubs/Swift', '~> 9.0'
   end
 end
 
