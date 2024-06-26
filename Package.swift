@@ -12,7 +12,6 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/buildkite/test-collector-swift", from: "0.3.0"),
         .package(url: "https://github.com/AliSoftware/OHHTTPStubs", from: "9.1.0"),
-        // See https://github.com/erikdoe/ocmock/issues/500#issuecomment-1002700625
         .package(url: "https://github.com/realm/SwiftLint", exact: loadSwiftLintVersion())
     ],
     targets: [
