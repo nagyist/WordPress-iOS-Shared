@@ -40,8 +40,6 @@ Pod::Spec.new do |s|
 
     test.dependency 'OHHTTPStubs', '~> 9.0'
     test.dependency 'OHHTTPStubs/Swift', '~> 9.0'
-    test.dependency 'OCMock', '~> 3.4'
-    test.dependency 'Quick', '~> 6.0'
   end
 end
 
